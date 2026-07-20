@@ -215,7 +215,7 @@ export const resumeData: ResumeData = {
           enabled: true,
         },
         {
-          text: "Designed the **frontend architecture** for a healthcare **PWA** using **Material UI and Service Workers**.",
+          text: "Designed the frontend architecture for a healthcare PWA using Next, Material UI and Service Workers.",
           enabled: true,
         },
         {
@@ -461,7 +461,7 @@ export const resumeDataFa: ResumeData = {
           enabled: true,
         },
         {
-          text: "طراحی **معماری فرانت‌اند** برای یک **PWA حوزه سلامت** با استفاده از **Material UI و Service Workers**.",
+          text: "طراحی معماری فرانت‌اند برای یک PWA حوزه سلامت با استفاده از Next، Material UI و Service Workers.",
           enabled: true,
         },
         {
