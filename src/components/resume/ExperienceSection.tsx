@@ -35,9 +35,7 @@ export function ExperienceSection({
             onRemove={() => {
               onChange(experience.filter((_, itemIndex) => itemIndex !== index));
             }}
-            compact={
-              item.compact ?? (index > 0 ? compactOlderExperience : false)
-            }
+            compact={compactOlderExperience && index > 0}
           />
         ))}
       </div>

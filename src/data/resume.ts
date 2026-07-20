@@ -25,7 +25,7 @@ export const resumeData: ResumeData = {
     links: [
       {
         label: "alibakhshandeh.vercel.app",
-        href: "https://alibakhshandeh.vercel.app/",
+        href: "Portfolio",
         displayValue: "alibakhshandeh.vercel.app",
       },
       {
@@ -65,19 +65,15 @@ export const resumeData: ResumeData = {
       ],
     },
     {
-      title: "Backend",
-      items: ["Node.js", "NestJS", "Express", "MongoDB"],
-    },
-    {
       title: "Others",
-      items: ["Docker", "CI/CD", "Git"],
+      items: ["Node.js", "NestJS", "Express", "MongoDB", "Docker", "CI/CD", "Git"],
     },
   ],
   experience: [
     {
       company: "Bitex (Pooleno)",
       companyUrl: "https://pooleno.ir",
-      title: "Senior Frontend Engineer | Frontend Team Lead",
+      title: "Frontend Team Lead",
       startDate: "2024",
       endDate: "Present",
       current: true,
