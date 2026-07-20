@@ -10,7 +10,7 @@ export const resumeSettings: ResumeSettings = {
 
 export const printSettings: PrintSettings = {
   pageSize: "A4",
-  bodyFontSize: 8.8,
+  bodyFontSize: 8.6,
   contentPaddingMm: 7,
 };
 
