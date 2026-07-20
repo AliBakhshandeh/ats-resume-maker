@@ -360,12 +360,8 @@ export const resumeDataFa: ResumeData = {
     },
     {
       title: "بک‌اند",
-      items: ["Node.js", "NestJS", "Express", "MongoDB"],
-    },
-    {
-      title: "سایر",
-      items: ["Docker", "CI/CD", "Git"],
-    },
+      items: [ "Node.js", "NestJS", "Express", "MongoDB","Docker", "CI/CD", "Git"],
+    }
   ],
   experience: [
     {
