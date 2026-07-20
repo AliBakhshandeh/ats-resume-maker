@@ -23,9 +23,9 @@ export const resumeData: ResumeData = {
     location: "Tehran, Iran",
     links: [
       {
-        label: "alibakhshandeh.vercel.app",
+        label: "Portfolio",
         href: "https://alibakhshandeh.vercel.app/",
-        displayValue: "Portfolio",
+        displayValue: "alibakhshandeh.vercel.app",
       },
       {
         label: "GitHub",
