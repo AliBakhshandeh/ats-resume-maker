@@ -6,7 +6,6 @@ export const resumeSettings: ResumeSettings = {
   showProjects: true,
   showEducation: false,
   showLanguages: false,
-  compactOlderExperience: true,
 };
 
 export const printSettings: PrintSettings = {

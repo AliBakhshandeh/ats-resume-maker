@@ -9,7 +9,6 @@ interface ExperienceSectionProps {
   language: ResumeLanguage;
   experience: Experience[];
   onChange: (experience: Experience[]) => void;
-  compactOlderExperience: boolean;
 }
 
 export function ExperienceSection({
@@ -17,7 +16,6 @@ export function ExperienceSection({
   language,
   experience,
   onChange,
-  compactOlderExperience,
 }: ExperienceSectionProps) {
   return (
     <ResumeSection title={title}>
@@ -35,7 +33,6 @@ export function ExperienceSection({
             onRemove={() => {
               onChange(experience.filter((_, itemIndex) => itemIndex !== index));
             }}
-            compact={compactOlderExperience && index > 0}
           />
         ))}
       </div>

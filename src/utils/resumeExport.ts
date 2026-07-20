@@ -55,8 +55,7 @@ function isResumeSettings(value: unknown): value is ResumeSettings {
     typeof value.showSkills === "boolean" &&
     typeof value.showProjects === "boolean" &&
     typeof value.showEducation === "boolean" &&
-    typeof value.showLanguages === "boolean" &&
-    typeof value.compactOlderExperience === "boolean"
+    typeof value.showLanguages === "boolean"
   );
 }
 

@@ -349,7 +349,6 @@ export function PrintToolbar({
               ["showProjects", "Projects"],
               ["showEducation", "Education"],
               ["showLanguages", "Languages"],
-              ["compactOlderExperience", "Compact older jobs"],
             ] as const
           ).map(([key, label]) => (
             <label

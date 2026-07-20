@@ -35,7 +35,7 @@ export function Resume({
   printSettings,
 }: ResumeProps) {
   const labels = {
-    summary: "SUMMARY",
+    summary: "PROFESSIONAL SUMMARY",
     skills: "SKILLS",
     experience: "WORK EXPERIENCE",
     projects: "PROJECTS",
@@ -97,7 +97,6 @@ export function Resume({
         language={language}
         experience={data.experience}
         onChange={updateExperience}
-        compactOlderExperience={settings.compactOlderExperience}
       />
       {settings.showProjects ? (
         <ProjectsSection

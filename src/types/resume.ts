@@ -78,7 +78,6 @@ export interface ResumeSettings {
   showProjects: boolean;
   showEducation: boolean;
   showLanguages: boolean;
-  compactOlderExperience: boolean;
 }
 
 export interface PrintSettings {

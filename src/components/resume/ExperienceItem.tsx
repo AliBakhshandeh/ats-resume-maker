@@ -2,6 +2,7 @@
 
 import {
   AddItemButton,
+  CompactToggleButton,
   RemoveItemButton,
 } from "@/components/resume/EditActions";
 import { EditableLink } from "@/components/resume/EditableLink";
@@ -15,7 +16,6 @@ interface ExperienceItemProps {
   language: ResumeLanguage;
   onChange: (experience: Experience) => void;
   onRemove?: () => void;
-  compact?: boolean;
 }
 
 export function ExperienceItem({
@@ -23,9 +23,9 @@ export function ExperienceItem({
   language,
   onChange,
   onRemove,
-  compact = false,
 }: ExperienceItemProps) {
   const editable = useEditableMode();
+  const compact = experience.compact === true;
   const presentLabel = language === "fa" ? "اکنون" : "Present";
   const enabledHighlights = experience.highlights.filter(
     (highlight) => highlight.enabled !== false,
@@ -58,6 +58,24 @@ export function ExperienceItem({
       ],
     });
   };
+  const setCompact = (nextCompact: boolean) => {
+    updateExperience({
+      compact: nextCompact,
+      shortDescription:
+        nextCompact && experience.shortDescription === undefined
+          ? enabledHighlights[0]?.text ?? "Short description"
+          : experience.shortDescription,
+    });
+  };
+
+  const itemActions = (
+    <div className="absolute -right-1 -top-1 z-10 flex items-center gap-1">
+      <CompactToggleButton compact={compact} onChange={setCompact} />
+      {onRemove ? (
+        <RemoveItemButton label="Remove experience" onClick={onRemove} />
+      ) : null}
+    </div>
+  );
 
   const companyName = (
     <EditableLink
@@ -107,11 +125,7 @@ export function ExperienceItem({
   if (compact) {
     return (
       <article className="relative break-inside-avoid page-break-inside-avoid">
-        {onRemove ? (
-          <div className="absolute -right-1 -top-1">
-            <RemoveItemButton label="Remove experience" onClick={onRemove} />
-          </div>
-        ) : null}
+        {itemActions}
         <div className="flex flex-wrap justify-between gap-x-3 gap-y-0.5 leading-tight">
           <div>
             <h3 className="font-semibold text-slate-950">{companyName}</h3>
@@ -152,11 +166,7 @@ export function ExperienceItem({
 
   return (
     <article className="relative break-inside-avoid page-break-inside-avoid">
-      {onRemove ? (
-        <div className="absolute -right-1 -top-1">
-          <RemoveItemButton label="Remove experience" onClick={onRemove} />
-        </div>
-      ) : null}
+      {itemActions}
       <div className="flex flex-wrap justify-between gap-x-4 gap-y-1">
         <div>
           <h3 className="text-[9.7pt] font-bold leading-tight text-slate-950">
