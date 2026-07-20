@@ -66,7 +66,7 @@ export const resumeData: ResumeData = {
     },
     {
       title: "Backend",
-      items: ["Node.js", "NestJS", "Express", "MongoDB", "Mongoose"],
+      items: ["Node.js", "NestJS", "Express", "MongoDB"],
     },
     {
       title: "Others",
@@ -365,7 +365,7 @@ export const resumeDataFa: ResumeData = {
     },
     {
       title: "بک‌اند",
-      items: ["Node.js", "NestJS", "Express", "MongoDB", "Mongoose"],
+      items: ["Node.js", "NestJS", "Express", "MongoDB"],
     },
     {
       title: "سایر",
