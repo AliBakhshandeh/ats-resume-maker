@@ -1,0 +1,188 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "YekanBakhPooleno";
+  font-style: normal;
+  font-weight: 100;
+  font-display: swap;
+  src: url("/fonts/yekan/YekanBakhPooleno-Thin.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "YekanBakhPooleno";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/yekan/YekanBakhPooleno-Regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "YekanBakhPooleno";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/fonts/yekan/YekanBakhPooleno-SemiBold.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "YekanBakhPooleno";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/yekan/YekanBakhPooleno-Bold.woff2") format("woff2");
+}
+
+:root {
+  --resume-body-font-size: 10pt;
+  --resume-content-padding: 12mm;
+  --resume-section-gap: 8px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: #f1f5f9;
+}
+
+body {
+  margin: 0;
+  color: #1e293b;
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 0.06em;
+  text-underline-offset: 0.16em;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid #0284c7;
+  outline-offset: 2px;
+}
+
+.resume-paper {
+  width: 210mm;
+  min-height: 297mm;
+  margin: 0 auto;
+  padding: var(--resume-content-padding);
+  background: #ffffff;
+  box-shadow: 0 22px 60px rgb(15 23 42 / 0.16);
+  color: #1f2937;
+  font-size: var(--resume-body-font-size);
+  line-height: 1.28;
+}
+
+.header-contact-item:not(:last-child)::after {
+  color: #94a3b8;
+  content: "|";
+  margin-inline-start: 0.5rem;
+}
+
+.resume-paper[dir="rtl"] {
+  direction: rtl;
+  font-family:
+    "YekanBakhPooleno",
+    Arial,
+    Helvetica,
+    sans-serif;
+  text-align: right;
+}
+
+.resume-paper[dir="rtl"] ul {
+  padding-left: 0;
+  padding-right: 1rem;
+}
+
+.resume-paper[dir="rtl"] .text-right {
+  text-align: left;
+}
+
+.resume-section {
+  margin-top: var(--resume-section-gap);
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+.section-heading {
+  margin-bottom: 4px;
+  border-bottom: 1px solid #cbd5e1;
+  color: #0f172a;
+  font-size: 8.1pt;
+  font-weight: 800;
+  letter-spacing: 0;
+  line-height: 1.2;
+  padding-bottom: 2px;
+  text-transform: uppercase;
+}
+
+.resume-footer-grid {
+  display: flex;
+  gap: 16px;
+  margin-top: 8px;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+.page-break-inside-avoid {
+  page-break-inside: avoid;
+}
+
+@media (max-width: 840px) {
+  html {
+    background: #ffffff;
+  }
+
+  .resume-paper {
+    width: 100%;
+    min-height: auto;
+    padding: 8mm;
+    box-shadow: none;
+  }
+}
+
+@page {
+  size: A4;
+  margin: 7mm;
+}
+
+@media print {
+  html,
+  body {
+    width: auto;
+    min-height: auto;
+    background: #ffffff;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  .resume-paper {
+    width: auto;
+    min-height: auto;
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+    border-radius: 0;
+  }
+
+  .resume-section {
+    break-inside: auto;
+    page-break-inside: auto;
+  }
+
+  .section-heading {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  a {
+    text-decoration: none;
+  }
+}
