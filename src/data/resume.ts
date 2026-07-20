@@ -24,8 +24,8 @@ export const resumeData: ResumeData = {
     links: [
       {
         label: "alibakhshandeh.vercel.app",
-        href: "Portfolio",
-        displayValue: "alibakhshandeh.vercel.app",
+        href: "https://alibakhshandeh.vercel.app/",
+        displayValue: "Portfolio",
       },
       {
         label: "GitHub",
