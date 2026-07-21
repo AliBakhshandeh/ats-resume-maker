@@ -26,6 +26,29 @@ function LtrText({ value }: { value: string }) {
   );
 }
 
+function normalizeDisplayText(value: string): string {
+  return value.replace(/\s+/g, " ").trim();
+}
+
+function getReadableLinkValue(
+  link: ResumeData["personal"]["links"][number],
+): string {
+  if (link.displayValue?.trim()) {
+    return normalizeDisplayText(link.displayValue);
+  }
+
+  if (link.href?.trim() && !link.href.startsWith("[ADD ")) {
+    return normalizeDisplayText(
+      link.href
+        .replace(/^https?:\/\//i, "")
+        .replace(/^www\./i, "")
+        .replace(/\/$/, ""),
+    );
+  }
+
+  return normalizeDisplayText(link.label);
+}
+
 export function ResumeHeader({ personal, onChange }: ResumeHeaderProps) {
   const updatePersonal = (patch: Partial<ResumeData["personal"]>) => {
     onChange({ ...personal, ...patch });
@@ -42,64 +65,80 @@ export function ResumeHeader({ personal, onChange }: ResumeHeaderProps) {
       </h1>
       <p className="mt-1 text-[9.8pt] font-semibold text-slate-700">
         <EditableText
-          value={personal.headline}
+          value={normalizeDisplayText(personal.headline)}
           ariaLabel="Headline"
           onChange={(headline) => updatePersonal({ headline })}
         />
       </p>
-      <address className="mt-2 flex flex-wrap items-center gap-x-2 gap-y-1 text-[8.2pt] not-italic leading-snug text-slate-700">
-        {[personal.location, personal.email, personal.phone]
-          .filter((item): item is string => Boolean(item))
-          .map((item) => (
-            <span key={item} className="header-contact-item">
-              {item === personal.email && !isPlaceholder(item) ? (
-                <a href={`mailto:${item}`}>
-                  <EditableText
-                    value={item}
-                    ariaLabel="Email"
-                    onChange={(email) => updatePersonal({ email })}
-                    renderValue={(value) => <LtrText value={value} />}
-                  />
-                </a>
-              ) : item === personal.phone ? (
-                <a href={`tel:${item}`}>
-                  <EditableText
-                    value={item}
-                    ariaLabel="Phone"
-                    onChange={(phone) => updatePersonal({ phone })}
-                    renderValue={(value) => <LtrText value={value} />}
-                  />
-                </a>
-              ) : (
-                <EditableText
-                  value={item}
-                  ariaLabel="Location"
-                  onChange={(location) => updatePersonal({ location })}
-                />
-              )}
-            </span>
-          ))}
+      <address className="resume-header-contact mt-2 text-[8.2pt] not-italic leading-snug text-slate-700">
+        {personal.location ? (
+          <p className="resume-contact-row">
+            <span className="resume-contact-label">Location:</span>{" "}
+            <EditableText
+              value={normalizeDisplayText(personal.location)}
+              ariaLabel="Location"
+              onChange={(location) => updatePersonal({ location })}
+            />
+          </p>
+        ) : null}
+        {personal.email ? (
+          <p className="resume-contact-row">
+            <span className="resume-contact-label">Email:</span>{" "}
+            <a href={`mailto:${personal.email}`}>
+              <EditableText
+                value={normalizeDisplayText(personal.email)}
+                ariaLabel="Email"
+                onChange={(email) => updatePersonal({ email })}
+                renderValue={(value) => <LtrText value={value} />}
+              />
+            </a>
+          </p>
+        ) : null}
+        {personal.phone ? (
+          <p className="resume-contact-row">
+            <span className="resume-contact-label">Phone:</span>{" "}
+            <a href={`tel:${personal.phone}`}>
+              <EditableText
+                value={normalizeDisplayText(personal.phone)}
+                ariaLabel="Phone"
+                onChange={(phone) => updatePersonal({ phone })}
+                renderValue={(value) => <LtrText value={value} />}
+              />
+            </a>
+          </p>
+        ) : null}
         {personal.links.map((link, index) => (
-          <span
+          <p
             key={`${link.label}-${link.href}-${index}`}
-            className="header-contact-item inline-flex items-center gap-1"
+            className="resume-contact-row inline-flex items-center gap-1"
           >
+            <span className="resume-contact-label">
+              {normalizeDisplayText(link.label || "Link")}:
+            </span>{" "}
             <EditableLink
-              label={link.label}
+              label={normalizeDisplayText(link.label)}
               href={link.href}
               editorTitle="Edit profile link"
               labelFieldName="Label"
               hrefFieldName="URL"
               openInNewTab={!isPlaceholder(link.href)}
-              renderLabel={(value) => <LtrText value={value} />}
+              renderLabel={() => <LtrText value={getReadableLinkValue(link)} />}
               onChange={({ label, href }) => {
                 const links = personal.links.map((item, itemIndex) =>
                   itemIndex === index
                     ? {
                         ...item,
-                        label,
+                        label: normalizeDisplayText(label),
                         href,
-                        displayValue: label,
+                        displayValue:
+                          href && !href.startsWith("[ADD ")
+                            ? normalizeDisplayText(
+                                href
+                                  .replace(/^https?:\/\//i, "")
+                                  .replace(/^www\./i, "")
+                                  .replace(/\/$/, ""),
+                              )
+                            : undefined,
                       }
                     : item,
                 );
@@ -116,7 +155,7 @@ export function ResumeHeader({ personal, onChange }: ResumeHeaderProps) {
                 })
               }
             />
-          </span>
+          </p>
         ))}
         <AddItemButton
           label="Add link"

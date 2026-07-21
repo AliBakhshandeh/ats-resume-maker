@@ -80,10 +80,19 @@ button:focus-visible {
   line-height: 1.28;
 }
 
-.header-contact-item:not(:last-child)::after {
-  color: #94a3b8;
-  content: "|";
-  margin-inline-start: 0.5rem;
+.resume-header-contact {
+  display: grid;
+  gap: 2px;
+}
+
+.resume-contact-row {
+  margin: 0;
+  white-space: normal;
+}
+
+.resume-contact-label {
+  color: #334155;
+  font-weight: 700;
 }
 
 .resume-paper[dir="rtl"] {
@@ -112,6 +121,7 @@ button:focus-visible {
 }
 
 .section-heading {
+  display: block;
   margin-bottom: 4px;
   border-bottom: 1px solid #cbd5e1;
   color: #0f172a;
@@ -121,6 +131,7 @@ button:focus-visible {
   line-height: 1.2;
   padding-bottom: 2px;
   text-transform: uppercase;
+  white-space: normal;
 }
 
 .resume-footer-grid {
@@ -180,6 +191,7 @@ button:focus-visible {
   .section-heading {
     break-after: avoid;
     page-break-after: avoid;
+    margin-top: 0;
   }
 
   a {

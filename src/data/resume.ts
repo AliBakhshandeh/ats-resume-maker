@@ -4,7 +4,7 @@ export const resumeSettings: ResumeSettings = {
   showSummary: true,
   showSkills: true,
   showProjects: true,
-  showEducation: false,
+  showEducation: true,
   showLanguages: false,
 };
 
@@ -310,6 +310,17 @@ export const resumeData: ResumeData = {
       highlights: [],
     },
   ],
+  education: [
+    {
+      institution: "Islamic Azad University, Central Tehran Branch",
+      degree: "Bachelor of Science",
+      field: "Computer Software Engineering",
+      location: "Tehran, Iran",
+      startDate: "2012",
+      endDate: "2017",
+      enabled: true,
+    },
+  ],
 };
 
 export const resumeDataFa: ResumeData = {
@@ -508,6 +519,17 @@ export const resumeDataFa: ResumeData = {
         "توسعه قابلیت‌های فرانت‌اند برای پلتفرمی که امکان سرمایه‌گذاری روی فروشگاه‌های خرده‌فروشی را فراهم می‌کرد؛ شامل workflowهای داده‌محور، جدول‌های پویا و فرم‌های configurable سرمایه‌گذاری.",
       enabled: true,
       highlights: [],
+    },
+  ],
+  education: [
+    {
+      institution: "دانشگاه آزاد اسلامی واحد تهران مرکز",
+      degree: "کارشناسی",
+      field: "مهندسی نرم‌افزار کامپیوتر",
+      location: "تهران، ایران",
+      startDate: "2012",
+      endDate: "2017",
+      enabled: true,
     },
   ],
 };

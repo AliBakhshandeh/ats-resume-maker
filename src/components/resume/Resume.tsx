@@ -34,12 +34,24 @@ export function Resume({
   settings,
   printSettings,
 }: ResumeProps) {
-  const labels = {
-    summary: "PROFESSIONAL SUMMARY",
-    skills: "SKILLS",
-    experience: "WORK EXPERIENCE",
-    projects: "PROJECTS",
-  };
+  const labels =
+    language === "fa"
+      ? {
+          summary: "Professional Summary / خلاصه حرفه‌ای",
+          skills: "Technical Skills / مهارت‌های فنی",
+          experience: "Work Experience / سوابق کاری",
+          projects: "Projects / پروژه‌ها",
+          education: "Education / تحصیلات",
+          languages: "Languages / زبان‌ها",
+        }
+      : {
+          summary: "Professional Summary",
+          skills: "Technical Skills",
+          experience: "Work Experience",
+          projects: "Projects",
+          education: "Education",
+          languages: "Languages",
+        };
   const updatePersonal = (personal: ResumeData["personal"]) => {
     onDataChange((current) => ({ ...current, personal }));
   };
@@ -109,12 +121,14 @@ export function Resume({
         <div className="resume-footer-grid">
           {settings.showEducation ? (
             <EducationSection
+              title={labels.education}
               education={data.education ?? []}
               onChange={updateEducation}
             />
           ) : null}
           {settings.showLanguages ? (
             <LanguagesSection
+              title={labels.languages}
               languages={data.languages ?? []}
               onChange={updateLanguages}
             />

@@ -10,18 +10,20 @@ import type { Education } from "@/types/resume";
 import { createEmptyEducation } from "@/utils/createEmptyResumeItems";
 
 interface EducationSectionProps {
+  title: string;
   education: Education[];
   onChange: (education: Education[]) => void;
 }
 
 export function EducationSection({
+  title,
   education,
   onChange,
 }: EducationSectionProps) {
   const enabledEducation = education.filter((item) => item.enabled !== false);
 
   return (
-    <ResumeSection title="Education" className="flex-1">
+    <ResumeSection title={title} className="flex-1">
       <div className="space-y-1">
         {enabledEducation.map((item) => {
           const itemIndex = education.indexOf(item);

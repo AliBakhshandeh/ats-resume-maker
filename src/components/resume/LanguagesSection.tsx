@@ -10,16 +10,18 @@ import type { Language } from "@/types/resume";
 import { createEmptyLanguage } from "@/utils/createEmptyResumeItems";
 
 interface LanguagesSectionProps {
+  title: string;
   languages: Language[];
   onChange: (languages: Language[]) => void;
 }
 
 export function LanguagesSection({
+  title,
   languages,
   onChange,
 }: LanguagesSectionProps) {
   return (
-    <ResumeSection title="Languages" className="flex-1">
+    <ResumeSection title={title} className="flex-1">
       <ul className="space-y-1 leading-snug">
         {languages.map((language, index) => (
           <li key={`${language.name}-${index}`} className="relative pr-4">
